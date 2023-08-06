@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="1.8">
+      <module name="CleanArchProject.androidApp.app" target="11" />
+      <module name="CleanArchProject.androidApp.auth" target="11" />
+      <module name="CleanArchProject.androidApp.core" target="11" />
+      <module name="CleanArchProject.androidApp.profile" target="11" />
+      <module name="CleanArchProject.authDataSource" target="11" />
+      <module name="CleanArchProject.buildSrc" target="11" />
+      <module name="CleanArchProject.buildSrc.main" target="11" />
+      <module name="CleanArchProject.buildSrc.test" target="11" />
+      <module name="CleanArchProject.contentDataSource" target="11" />
+      <module name="CleanArchProject.data" target="11" />
+      <module name="CleanArchProject.mylibrary" target="11" />
+      <module name="CleanArchProject.profileDataSource" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

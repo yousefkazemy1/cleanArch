@@ -1,0 +1,29 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "CleanArchProject"
+
+//include ':app'
+include ':androidApp:app'
+include ':androidApp:auth'
+include ':androidApp:profile'
+include ':androidApp:core'
+include ':core'
+include ':data'
+include ':authDataSource'
+include ':authDomain'
+include ':contentDataSource'
+include ':contentDomain'
+include ':profileDomain'
+include ':profileDataSource'

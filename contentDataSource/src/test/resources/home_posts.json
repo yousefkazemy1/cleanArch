@@ -1,0 +1,117 @@
+/**
+  media types: image, video
+  genders: undefined, male, female, custom
+*/
+{
+  "total_posts": 3,
+  "page": 0,
+  "posts": [
+    {
+      "id": 1,
+      "caption": "caption1",
+      "media": [
+        {
+          "id": 1,
+          "type": "image",
+          "resolutions": [
+            {
+              "url": "https://cdn.com/url1",
+              "width": 400,
+              "height": 400
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "type": "video",
+          "resolutions": [
+            {
+              "url": "https://cdn.com/url2",
+              "width": 400,
+              "height": 400
+            },
+            {
+              "url": "https://cdn.com/url3",
+              "width": 600,
+              "height": 600
+            }
+          ]
+        }
+      ],
+      "user": {
+        "id": 1,
+        "user_name": "userName1",
+        "name": "name1",
+        "gender": "male",
+        "profile_image": "male"
+      }
+    },
+    {
+      "id": 2,
+      "caption": "caption2",
+      "media": [
+        {
+          "id": 1,
+          "type": "video",
+          "resolutions": [
+            {
+              "url": "https://cdn.com/url4",
+              "width": 400,
+              "height": 400
+            }
+          ]
+        }
+      ],
+      "user": {
+        "id": 2,
+        "user_name": "userName2",
+        "name": "name2",
+        "gender": "female"
+      }
+    },
+    {
+      "id": 3,
+      "caption": "caption3",
+      "media": [
+        {
+          "id": 1,
+          "type": "image",
+          "resolutions": [
+            {
+              "url": "https://cdn.com/url5",
+              "width": 600,
+              "height": 600
+            },
+            {
+              "url": "https://cdn.com/url6",
+              "width": 800,
+              "height": 800
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "type": "video",
+          "resolutions": [
+            {
+              "url": "https://cdn.com/url7",
+              "width": 500,
+              "height": 500
+            },
+            {
+              "url": "https://cdn.com/url8",
+              "width": 900,
+              "height": 900
+            }
+          ]
+        }
+      ],
+      "user": {
+        "id": 3,
+        "user_name": "userName3",
+        "name": "name3",
+        "gender": "undefined"
+      }
+    }
+  ]
+}

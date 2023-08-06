@@ -1,0 +1,11 @@
+{
+  "user": {
+    "id": 1,
+    "user_name": "userName1",
+    "name": "name1",
+    "gender": "male",
+    "profile_image": null
+  },
+  "email": "email1@gmail.com",
+  "phone": "123456789"
+}

@@ -1,0 +1,20 @@
+<resources>
+    <string name="username_validation_error_message">The username you entered is not correct</string>
+    <string name="password_validation_error_message">The password you entered is not correct</string>
+    <string name="enter_username_hint">Enter your username</string>
+    <string name="enter_password_hint">Enter your password</string>
+    <string name="action_login">Login</string>
+    <string name="error_in_server">An error occurred in server</string>
+    <string name="logged_in_successfully">You logged in successfully</string>
+    <string name="signed_up_successfully">You Signed up successfully, please login</string>
+    <string name="action_hide">Hide</string>
+    <string name="text_login">Login</string>
+    <string name="action_signup_instead">Sign up instead</string>
+    <string name="text_signup">Sign up</string>
+    <string name="action_login_instead">Login instead</string>
+    <string name="enter_email_hint">Enter your email</string>
+    <string name="enter_name_hint">Enter your name</string>
+    <string name="action_signup">Sign up</string>
+    <string name="email_validation_error_message">The email you entered is not correct</string>
+    <string name="name_validation_error_message">The name you entered is not correct</string>
+</resources>
