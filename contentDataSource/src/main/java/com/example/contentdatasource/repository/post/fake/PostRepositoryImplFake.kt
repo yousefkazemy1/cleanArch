@@ -77,24 +77,6 @@ class PostRepositoryImplFake : PostRepository {
                         name = "Nazanin",
                         profileImage = "https://moviesapi.ir/images/tt0468569_poster.jpg"
                     )
-                ),
-                Post(
-                    id = 5, caption = "Superman", media = listOf(
-                        Media(
-                            id = 1, type = MediaType.IMAGE, mediaResolutions = listOf(
-                                MediaResolution(
-                                    url = "http://s14.ir-android.com/joke_city/PrivatePictures100/17399729/1690505077487_606x1366.jpg",
-                                    width = 606u,
-                                    height = 1366u
-                                )
-                            )
-                        )
-                    ), user = User(
-                        id = 5,
-                        userName = "Superman",
-                        name = "Nazanin",
-                        profileImage = "https://moviesapi.ir/images/tt0468569_poster.jpg"
-                    )
                 )
             )
         )
