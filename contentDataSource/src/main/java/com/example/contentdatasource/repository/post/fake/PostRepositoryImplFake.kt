@@ -17,6 +17,15 @@ class PostRepositoryImplFake : PostRepository {
                                     height = 163u
                                 )
                             )
+                        ),
+                        Media(
+                            id = 2, type = MediaType.VIDEO, mediaResolutions = listOf(
+                                MediaResolution(
+                                    url = "https://filebox.iran-europe.net/teacherfiles/marathon-effort-erchana-murray-bartlett-runs-150-marathons-in-150-days-to-raise-funds-for-wildlife-givefastlink.mp4",
+                                    width = 291u,
+                                    height = 121u
+                                )
+                            )
                         )
                     ), user = User(
                         id = 1,

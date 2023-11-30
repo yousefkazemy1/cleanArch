@@ -8,6 +8,7 @@ import androidx.compose.ui.semantics.getOrNull
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.SemanticsNodeInteraction
 import androidx.compose.ui.text.TextLayoutResult
+import com.example.core.component.ui.compose.post.DrawableId
 
 fun SemanticsNodeInteraction.assertTextColor(color: Color): SemanticsMatcher = SemanticsMatcher(
     "${SemanticsProperties.Text.name} is of color '$color'"

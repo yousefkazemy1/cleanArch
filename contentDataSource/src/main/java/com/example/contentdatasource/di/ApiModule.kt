@@ -1,6 +1,7 @@
 package com.example.contentdatasource.di
 
 import com.example.contentdatasource.remote.PostApi
+import com.example.contentdatasource.repository.post.fake.PostRepositoryImpl2
 import com.example.contentdatasource.repository.post.fake.PostRepositoryImplFake
 import com.example.contentdomain.repository.PostRepository
 import dagger.Module
@@ -17,6 +18,6 @@ object ApiModule {
         postApi: PostApi
     ): PostRepository {
 //        return PostRepositoryImpl(postApi)
-        return PostRepositoryImplFake()
+        return PostRepositoryImpl2(postApi = postApi)
     }
 }

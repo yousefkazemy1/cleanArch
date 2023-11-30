@@ -1,21 +1,16 @@
-package com.example.core.component.ui.compose
+package com.example.core.component.ui.compose.post
 
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.ImageButton
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.vectorResource
@@ -24,17 +19,15 @@ import androidx.compose.ui.semantics.SemanticsPropertyReceiver
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
-import coil.compose.AsyncImage
 import com.example.core.R
+import com.example.core.component.ui.compose.ProfileItemView
 import com.example.core.model.MediaUI
 import com.example.core.model.PostItemUI
 import com.example.core.model.UserUI
 import com.example.core.utils.density
-import com.example.core.utils.getScaledMediaSize
 import com.example.core.utils.toDp
 
 @Preview
@@ -62,6 +55,7 @@ fun PostPreview() {
 
         })
 }
+
 val DrawableId = SemanticsPropertyKey<Int>("DrawableResId")
 var SemanticsPropertyReceiver.drawableId by DrawableId
 val drawableFavorite = R.drawable.favorite_24
@@ -78,68 +72,24 @@ fun PostItemView(
     extraHeight: UShort = 0u,
     onLikeClick: (isLike: Boolean) -> Unit,
     onShareClick: () -> Unit,
+    isPlayerReady: Boolean = false,
 ) {
     var isLiked by remember { mutableStateOf(false) }
 
     Column(modifier) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 12.dp, top = 4.dp, end = 12.dp, bottom = 4.dp)
-        ) {
-            RoundedAsyncImageView(
-                modifier = Modifier
-                    .padding(end = 6.dp)
-                    .size(38.dp)
-                    .testTag("user_image"),
-                imageUrl = post.user.profileImage,
-                scale = ContentScale.Crop
-            )
-
-            Text(
-                modifier = Modifier.testTag("username_text"),
-                text = post.user.username,
-                fontSize = 18.sp,
-                color = Color.Black
-            )
-        }
+        ProfileItemView(modifier = modifier, user = post.user)
 
         Spacer(modifier = Modifier.height(4.dp))
 
-        Box(
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            val scaledMediaSize = getScaledMediaSize(
-                screenSize = screenSize,
-                mediaSize = Pair(post.mediaUI.width, post.mediaUI.height),
-                extraHeight = extraHeight
-            )
-            AsyncImage(
-                modifier = Modifier
-                    .width(
-                        width = scaledMediaSize.first
-                            .toDp(density)
-                            .toInt().dp
-                    )
-                    .height(
-                        height = scaledMediaSize.second
-                            .toDp(density)
-                            .toInt().dp
-                    )
-                    .align(Alignment.Center)
-                    .testTag("media_image"),
-                model = post.mediaUI.image,
-                contentDescription = "image",
-                contentScale = ContentScale.Crop
-            )
-
-            if (isPlaying) {
-                VideoPlayerWithControls(
-                    exoPlayer = exoPlayer, scaledMediaSize = scaledMediaSize
-                )
-            }
-        }
+        PostMedia(
+            mediaList = listOf(post.mediaUI),
+            density = density,
+            screenSize = screenSize,
+            extraHeight = extraHeight,
+            isPlaying = isPlaying,
+            isPlayerReady = isPlayerReady,
+            exoPlayer = exoPlayer
+        )
 
         Row(Modifier.padding(start = 8.dp, top = 4.dp, end = 8.dp, bottom = 4.dp)) {
             IconButton(
@@ -159,8 +109,7 @@ fun PostItemView(
                             } else {
                                 drawableUnFavorite
                             }
-                        },
-                    imageVector = if (isLiked) {
+                        }, imageVector = if (isLiked) {
                         ImageVector.vectorResource(id = drawableFavorite)
                     } else {
                         ImageVector.vectorResource(id = drawableUnFavorite)
@@ -186,37 +135,4 @@ fun PostItemView(
             }
         }
     }
-}
-
-@androidx.annotation.OptIn(androidx.media3.common.util.UnstableApi::class)
-@Composable
-fun VideoPlayerWithControls(exoPlayer: ExoPlayer?, scaledMediaSize: Pair<UShort, UShort>) {
-    val context = LocalContext.current
-    val playerView = remember {
-        val layout = LayoutInflater.from(context).inflate(R.layout.video_player_auto, null)
-        val playerView = (layout.findViewById(R.id.playerView) as PlayerView).apply {
-            player = exoPlayer
-            setShutterBackgroundColor(android.graphics.Color.TRANSPARENT)
-        }
-        layout.findViewById<ImageButton>(R.id.exo_pause).setOnClickListener { exoPlayer?.pause() }
-        layout.findViewById<ImageButton>(R.id.exo_play).setOnClickListener { exoPlayer?.play() }
-        layout.id = View.generateViewId()
-        playerView
-    }
-
-    AndroidView(
-        { playerView },
-        Modifier
-            .width(
-                width = scaledMediaSize.first
-                    .toDp(density)
-                    .toInt().dp
-            )
-            .height(
-                height = scaledMediaSize.second
-                    .toDp(density)
-                    .toInt().dp
-            )
-            .background(Color.Black)
-    )
 }

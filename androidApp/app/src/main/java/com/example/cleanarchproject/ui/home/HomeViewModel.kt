@@ -22,7 +22,7 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             useCase().let { result ->
                 if (result is Result.Success) {
-                    videos.value = result.data.mapToPostItemUIs()
+                    videos.emit(result.data.mapToPostItemUIs())
                 }
             }
         }

@@ -22,6 +22,7 @@ fun List<Post>.mapToPostItemUIs(): List<PostItemUI> {
             mediaUI = MediaUI(
                 id = post.media[0].id,
                 image = post.media[0].mediaResolutions[0].url,
+                video = if (post.media.size == 2) post.media[1].mediaResolutions[0].url else null,
                 width = post.media[0].mediaResolutions[0].width,
                 height = post.media[0].mediaResolutions[0].height,
             )

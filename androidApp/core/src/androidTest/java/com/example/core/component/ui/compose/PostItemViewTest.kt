@@ -7,6 +7,7 @@ import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.unit.dp
 import com.example.core.R
+import com.example.core.component.ui.compose.post.PostItemView
 import com.example.core.model.MediaUI
 import com.example.core.model.PostItemUI
 import com.example.core.model.UserUI
