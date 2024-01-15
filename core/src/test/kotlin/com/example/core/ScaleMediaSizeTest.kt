@@ -47,10 +47,15 @@ class ScaleMediaSizeTest {
         val mediaSize = Pair<UShort, UShort>(606u, 1366u) // height to width ratio: 2.25
         val extraHeight: UShort = 100u
 
+        val screenHeight = screenSize.second.toDouble() - extraHeight.toDouble()
+        val mediaWidth = mediaSize.first.toDouble()
+        val mediaHeight = mediaSize.second.toDouble()
+
         val expectedSacleWidth = Math.round(
-            (screenSize.second.toDouble() + extraHeight.toDouble()) * mediaSize.first.toDouble() / mediaSize.second.toDouble()
+            screenHeight * mediaWidth / mediaHeight
         )
-        val expectedResult = Pair(expectedSacleWidth.toUShort(), (screenSize.second - extraHeight).toUShort())
+        val expectedResult =
+            Pair(expectedSacleWidth.toUShort(), screenHeight.toInt().toUShort())
 
         val scaleSize = getScaledMediaSize(
             screenSize = screenSize, mediaSize = mediaSize, extraHeight = extraHeight
